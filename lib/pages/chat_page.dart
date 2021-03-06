@@ -1,98 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo_whatsapp/models/chat_model.dart';
 
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            radius: 23.0,
-            backgroundColor: Colors.grey,
-            backgroundImage: NetworkImage(
-                "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
-          ),
-          title: Text(
-            "Elvis Barrionuevo",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0),
-          ),
-          subtitle: Text("Flutter es genial"),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "15:46",
-                style: TextStyle(fontSize: 13.0, color: Colors.black54),
+    return ListView.builder(
+      itemCount: dataListChat.length,
+      itemBuilder: (BuildContext context, int index) {
+
+        return Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                radius: 23.0,
+                backgroundColor: Colors.grey,
+                backgroundImage: NetworkImage(dataListChat[index].avatarURL),
               ),
-              Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Center(
-                  child: Text(
-                    "7",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold),
+              title: Text(
+                dataListChat[index].name,
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0),
+              ),
+              subtitle: Text(dataListChat[index].message),
+              trailing: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    dataListChat[index].time,
+                    style: TextStyle(fontSize: 13.0, color: Colors.black54),
                   ),
-                ),
+                  Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).accentColor,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Center(
+                      child: Text(
+                        dataListChat[index].countMessage.toString(),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-
-
-              // CircleAvatar(
-              //   radius: 10,
-              //   backgroundColor: Theme.of(context).accentColor,
-              //   child: Text(
-              //     "7",
-              //     style: TextStyle(
-              //       color: Colors.white,
-              //       fontSize: 11,
-              //       fontWeight: FontWeight.bold
-              //     ),
-              //   ),
-              // )
-            ],
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 50.0, right: 20.0),
-          child: Divider(
-            height: 10,
-            thickness: 0.5,
-          ),
-        ),
-      ],
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 50.0, right: 20.0),
+              child: Divider(
+                height: 10,
+                thickness: 0.5,
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
