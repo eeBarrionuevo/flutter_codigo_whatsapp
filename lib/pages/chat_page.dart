@@ -59,13 +59,40 @@ class ChatPage extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.only(left: 50.0, right: 20.0),
           child: Divider(
             height: 10,
             thickness: 0.5,
           ),
-        )
+        ),
       ],
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
